@@ -11,15 +11,6 @@
     "type": "git",
     "url": "git+https://github.com/comp426-2023-spring/a03-RupertoM.git"
   },
-  "keywords": [
-    "web",
-    "server",
-    "port",
-    "node",
-    "fs",
-    "args",
-    "http"
-  ],
   "author": "@RupertoM",
   "license": "MIT",
   "bugs": {
