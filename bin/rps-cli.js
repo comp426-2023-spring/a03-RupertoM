@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 import minimist from "minimist";
-import { rps,help,rules } from "../lib/rpsls.js";
 
 const args = minimist(process.argv.slice(2), {
     alias: {
@@ -9,6 +8,7 @@ const args = minimist(process.argv.slice(2), {
     }
 });
 
+import { rps,help,rules } from "../lib/rpsls.js";
 
 if (args.h || args.help){
     help();
