@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import minimist from "minimist";
+import {rpsls, RPSLSHelp, RPSLSRules} from "../lib/rpsls.js"
 
 const args = minimist(process.argv.slice(2),{
     alias: {
@@ -7,30 +8,28 @@ const args = minimist(process.argv.slice(2),{
     }
 });
 
-import {rpsls, RPSLSHelp, RPSLSRules} from "../lib/rpsls.js"
-
-if (args.h || args.help) {
-    RPSLSHelp();
-    process.exit();
-} else if (args.r || args.rules) {
-    RPSLSRules();
-    process.exit();
-}
-else {
-    var playChoice = args._[0];
-
-    if (!playChoice) {
-        var result = { "player": "rock" };
-        console.log(JSON.stringify(result));
+switch(true) {
+    case (args.h || args.help):
+        expansionHelp();
         process.exit();
-    }
+    case (args.r || args.rules):
+        expansionRules();
+        process.exit()
+    default:
+        var playChoice = args._[0];
 
-    playChoice = playChoice.toLowerCase();
+        if (!playChoice) {
+            const result = { "play": "rock"};
+            console.log(JSON.stringify(result));
+            process.exit();
+        }
+        
+        playChoice = playChoice.toLowerCase;
+        const result = rpsls(playChoice);
 
-    var result = rpsls(playerMove);
-
-    if (!(typeof result == "undefined")) {
-        console.log(JSON.stringify(result));
-    }
-    process.exit();
+        if (!(typeof result == "undefined")) {
+            console.log(JSON.stringify(result));
+            process.exit();
+        }
+        process.exit();
 }
