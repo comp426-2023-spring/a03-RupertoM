@@ -8,3 +8,20 @@ const args = minimist(process.argv.slice(2), {
         r: "rules"
     }
 });
+
+
+if (args.h || args.help){
+    help();
+    process.exit(0)
+} 
+if (args.r || args.rules){
+    rules();
+    process.exit();
+} else {
+    var playChoice = args._[0];
+
+    if(!playChoice){
+        var result = {"player":"rock"};
+        console.log(JSON.stringify(result));
+        process.exit();
+    }
