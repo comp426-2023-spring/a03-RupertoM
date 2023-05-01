@@ -10,10 +10,10 @@ const args = minimist(process.argv.slice(2),{
 
 switch(true) {
     case (args.h || args.help):
-        expansionHelp();
+        RPSLSHelp();
         process.exit();
     case (args.r || args.rules):
-        expansionRules();
+        RPSLSRules();
         process.exit()
     default:
         var playChoice = args._[0];
