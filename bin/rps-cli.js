@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import minimist from "minimist";
+import { rps,help,rules } from "../lib/rpsls.js";
 
 const args = minimist(process.argv.slice(2), {
     alias: {
@@ -8,33 +9,28 @@ const args = minimist(process.argv.slice(2), {
     }
 });
 
-import { rps,help,rules } from "../lib/rpsls.js";
-
-if (args.h || args.help){
-    help();
-    process.exit(0)
-} 
-
-if (args.r || args.rules){
-    rules();
-    process.exit();
-    
-} else {
-    var playChoice = args._[0];
-
-    if(!playChoice){
-        var result = {"player":"rock"};
-        console.log(JSON.stringify(result));
+switch(true) {
+    case (args.h || args.help):
+        help();
         process.exit();
-    }
+    case (args.r || args.rules):
+        rules();
+        process.exit()
+    default:
+        var playChoice = args._[0];
 
-    playChoice = playChoice.toLowerCase();
+        if (!playChoice) {
+            const result = { "play": "rock"};
+            console.log(JSON.stringify(result));
+            process.exit();
+        }
+        
+        playChoice = playChoice.toLowerCase;
+        const result = rps(playChoice);
 
-    var result = rps(playChoice);
-
-    if(!(typeof result == "undefined")){
-        console.log(JSON.stringify(result));
+        if (!(typeof result == "undefined")) {
+            console.log(JSON.stringify(result));
+            process.exit();
+        }
         process.exit();
-    }
-    process.exit();
 }
