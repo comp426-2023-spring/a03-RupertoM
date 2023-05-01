@@ -1,11 +1,13 @@
 #!/usr/bin/env node
-import {rpsls, RPSLSHelp, RPSLSRules} from "../lib/rpsls.js"
 import minimist from "minimist";
+
 const args = minimist(process.argv.slice(2),{
     alias: {
         r: "rules"
     }
 });
+
+import {rpsls, RPSLSHelp, RPSLSRules} from "../lib/rpsls.js"
 
 if (args.h || args.help) {
     RPSLSHelp();
