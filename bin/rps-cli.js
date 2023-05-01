@@ -14,9 +14,11 @@ if (args.h || args.help){
     help();
     process.exit(0)
 } 
+
 if (args.r || args.rules){
     rules();
     process.exit();
+    
 } else {
     var playChoice = args._[0];
 
@@ -25,3 +27,14 @@ if (args.r || args.rules){
         console.log(JSON.stringify(result));
         process.exit();
     }
+
+    playChoice = playChoice.toLowerCase();
+
+    var result = rps(playChoice);
+
+    if(!(typeof result == "undefined")){
+        console.log(JSON.stringify(result));
+        process.exit();
+    }
+    process.exit();
+}
