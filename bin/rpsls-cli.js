@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import {rpsls, RPSSLHelp, RPSLSRules} from "../lib/rpsls"
+import {rpsls, RPSSLHelp, RPSLSRules} from "../lib/rpsls.js"
 import minimist from "minimist";
 const args = minimist(process.argv.slice(2),{
     alias: {
