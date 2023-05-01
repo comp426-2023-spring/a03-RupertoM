@@ -20,7 +20,7 @@ switch(true) {
         var playChoice = args._[0];
 
         if (!playChoice) {
-            const result = { "play": "rock"};
+            const result = { "player": "rock"};
             console.log(JSON.stringify(result));
             process.exit();
         }
